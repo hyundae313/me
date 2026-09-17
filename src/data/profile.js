@@ -10,6 +10,9 @@
 //  · projects[].links  공개 가능한 링크가 있다면
 // ─────────────────────────────────────────────────────────────
 
+// 배포 경로(vite base) 기준으로 이미지 주소를 만듭니다.
+const BASE = import.meta.env.BASE_URL
+
 const t = (ko, en) => ({ ko, en })
 
 export const profile = {
@@ -38,8 +41,8 @@ export const profile = {
   phone: '010-2757-2963',
   showPhone: false,
 
-  avatar: '/images/avatar.svg',
-  ogImage: '/images/og.svg',
+  avatar: `${BASE}images/avatar.svg`,
+  ogImage: `${BASE}images/og.svg`,
   resumeUrl: '', // 이력서 PDF 를 public/ 에 넣고 '/resume.pdf' 처럼 지정
 
   socials: [
@@ -105,7 +108,7 @@ export const stacks = [
 export const projects = [
   {
     id: 'trito',
-    image: '/images/projects/trito.svg',
+    image: `${BASE}images/projects/trito.svg`,
     title: 'TriTo',
     org: t('느낌있는 사람들', 'Neukkim'),
     year: '2018.6 — 2020.2',
@@ -121,7 +124,7 @@ export const projects = [
   },
   {
     id: 'bamnat',
-    image: '/images/projects/bamnat.svg',
+    image: `${BASE}images/projects/bamnat.svg`,
     title: t('밤낮화물', 'Bamnat Freight'),
     org: t('느낌있는 사람들', 'Neukkim'),
     year: '2017.10 — 2018.6',
@@ -138,7 +141,7 @@ export const projects = [
   },
   {
     id: 'dialysisnet',
-    image: '/images/projects/dialysisnet.svg',
+    image: `${BASE}images/projects/dialysisnet.svg`,
     title: 'DialysisNet',
     org: t('국가핵심연구소 (NCRC)', 'NCRC'),
     year: '2013.10 — 2016.2',
@@ -154,7 +157,7 @@ export const projects = [
   },
   {
     id: 'healthavatar',
-    image: '/images/projects/healthavatar.svg',
+    image: `${BASE}images/projects/healthavatar.svg`,
     title: 'Health Avatar',
     org: t('국가핵심연구소 (NCRC)', 'NCRC'),
     year: '2013.10 — 2016.2',
@@ -170,7 +173,7 @@ export const projects = [
   },
   {
     id: 'drugtarget',
-    image: '/images/projects/drugtarget.svg',
+    image: `${BASE}images/projects/drugtarget.svg`,
     title: t('Drug–Target 시각화', 'Drug–Target Visualization'),
     org: 'UC San Diego',
     year: '2016.2 — 2016.11',
@@ -186,7 +189,7 @@ export const projects = [
   },
   {
     id: 'iconcur',
-    image: '/images/projects/iconcur.svg',
+    image: `${BASE}images/projects/iconcur.svg`,
     title: 'iCONCUR',
     org: 'UC San Diego',
     year: '2016.2 — 2016.11',

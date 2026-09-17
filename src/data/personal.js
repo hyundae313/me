@@ -10,11 +10,14 @@
 //     나머지(학력·경력·크로스핏·취향)는 주신 사실 그대로입니다.
 // ─────────────────────────────────────────────────────────────
 
+// 배포 경로(vite base) 기준으로 이미지 주소를 만듭니다.
+const BASE = import.meta.env.BASE_URL
+
 export const me = {
   name: '김현대',
   city: '서울',
   job: '앱을 만들고, 가르칩니다',
-  photo: '/images/personal/me.jpeg', // 사진 교체 → public/images/personal/
+  photo: `${BASE}images/personal/me.jpeg`, // 사진 교체 → public/images/personal/
 
   greeting: '안녕하세요,',
   intro: [
@@ -66,7 +69,7 @@ export const story = {
       no: '01',
       year: '2009',
       title: '시골에서 서울로',
-      photo: '/images/personal/story-1.png',
+      photo: `${BASE}images/personal/story-1.png`,
       body: [
         '컴퓨터공학과에 들어갔습니다. 무언가를 만들면 그게 실제로 움직인다는 게 좋았습니다. 밤을 새워도 아깝지 않은 종류의 일이 있다는 걸 그때 처음 알았어요.',
         '중간에 군대를 다녀왔고, 돌아와서도 여전히 같은 게 재미있었습니다.',
@@ -76,7 +79,7 @@ export const story = {
       no: '02',
       year: '2013',
       title: '서울대학교 의과대학에서',
-      photo: '/images/personal/story-2.jpg',
+      photo: `${BASE}images/personal/story-2.jpg`,
       body: [
         '운이 좋게도, 서울대 의과대학 연구실에 들어갔습니다. 환자들의 기록을 다루는 일이었어요. 혈액투석을 받는 분들, 소아암과 유방암 환자분들이 쓸 앱을 만들었습니다.',
         '숫자로만 보이던 데이터 뒤에 사람의 하루가 있다는 걸 그때 배웠습니다. 제가 만든 화면을 누군가는 아픈 몸으로 열어본다는 사실이 오래 남았어요.',
@@ -86,7 +89,7 @@ export const story = {
       no: '03',
       year: '2016',
       title: '날씨가 너무 좋은 샌디에이고',
-      photo: '/images/personal/story-3.JPG',
+      photo: `${BASE}images/personal/story-3.JPG`,
       body: [
         '미국 UC San Diego에서 일년정도를 지냈습니다. 날씨가 너무 좋았는데, 아는 사람 하나 없는 도시에서 혼자 지내는 시간이었어요.',
         '말이 잘 안 통하는 곳에서 혼자 밥을 먹고 혼자 주말을 보내다 보면, 내가 뭘 좋아하고 뭘 못 견디는 사람인지가 이상하게 선명해지더라고요.',
@@ -97,7 +100,7 @@ export const story = {
       no: '04',
       year: '2017',
       title: '그만두기로 한 날',
-      photo: '/images/personal/story-4.svg',
+      photo: `${BASE}images/personal/story-4.svg`,
       body: [
         '큰 꿈의 포부를 가지고, 박사과정을 그만뒀습니다. 4년을 다녔고, 남들이 보기엔 아까운 선택이었을 거예요.',
         '잘 해내고 있었지만 제가 원하는 삶의 모양은 아니라는 걸 알아버렸습니다. 확신이 있어서가 아니라, 확신 없이 계속 가는 게 더 무서워서 내린 결정이었어요.',
@@ -108,7 +111,7 @@ export const story = {
       no: '05',
       year: '2017',
       title: '내 것을 만들며',
-      photo: '/images/personal/story-5.svg',
+      photo: `${BASE}images/personal/story-5.svg`,
       body: [
         '나만의 작은 회사를 만들어 혼자 앱을 만들고 운영했습니다. 화물 배차를 자동으로 매칭하는 앱을 만들어 특허를 받았고, 여행 일정을 나누고 동행을 찾아주는 앱도 만들었습니다.',
         '기획부터 디자인, 개발, 서버, 고객 응대까지 전부 혼자 했습니다. 힘든 시기도 있었지만 그 몇 년이 저를 제일 많이 키웠습니다.',
@@ -118,7 +121,7 @@ export const story = {
       no: '06',
       year: '지금',
       title: '지금은',
-      photo: '/images/personal/story-6.svg',
+      photo: `${BASE}images/personal/story-6.svg`,
       body: [
         'H3 NETWORKS라는 국제물류 IT 회사에서 기술총괄이사로 일합니다. 화물이 국내해외로 오가는 일에 기술을 붙이는 게 생각보다 훨씬 재미있어요.',
         '동양미래대학교에서 겸임교수로도 있습니다. 예전의 저 같은 얼굴들 앞에 서면 이상하게 마음이 갑니다.',
@@ -139,18 +142,18 @@ export const days = {
   '평일은 항상 매일 같은 시간, 같은 장소, 같은 일을 반복하면서 의무감속에 살고 있고, 주말에는 모든걸 자유롭게 지내는 편입니다'
   ],
   photos: [
-    { src: '/images/personal/day-1.svg', caption: '아침 커피' },
-    { src: '/images/personal/day-2.svg', caption: '작업 책상' },
-    { src: '/images/personal/day-3.svg', caption: '박스에서' },
-    { src: '/images/personal/day-4.svg', caption: '대회날' },
+    { src: `${BASE}images/personal/day-1.svg`, caption: '아침 커피' },
+    { src: `${BASE}images/personal/day-2.svg`, caption: '작업 책상' },
+    { src: `${BASE}images/personal/day-3.svg`, caption: '박스에서' },
+    { src: `${BASE}images/personal/day-4.svg`, caption: '대회날' },
   ],
 }
 
 // ── 섹션 사이에 한 장씩 들어가는 사진 ────────────────────────
 //  after: 이 섹션이 끝난 뒤에 놓입니다. caption 은 비워도 됩니다.
 export const interludes = [
-  { after: 'story', src: '/images/personal/me-1.svg', caption: '' },
-  { after: 'likes', src: '/images/personal/me-2.svg', caption: '' },
+  { after: 'story', src: `${BASE}images/personal/me-1.svg`, caption: '' },
+  { after: 'likes', src: `${BASE}images/personal/me-2.svg`, caption: '' },
 ]
 
 // ── 좋아하는 것들 ────────────────────────────────────────────
@@ -190,7 +193,7 @@ export const likes = {
 // ── 가치관 · 앞으로 ──────────────────────────────────────────
 export const values = {
   title: '앞으로',
-  photo: '/images/personal/me-3.png', // 마무리 편지 위에 놓이는 사진
+  photo: `${BASE}images/personal/me-3.png`, // 마무리 편지 위에 놓이는 사진
   photoCaption: '',
   lead: '좋은 사람을 만나 오래 함께하고 싶어서, 저를 한 번 정리해 봤습니다.',
   beliefs: [
