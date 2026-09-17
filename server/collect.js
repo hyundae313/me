@@ -13,6 +13,7 @@
 //    DIST_DIR      기본 ./dist
 //    MASK_IP       기본 1 (IPv4 마지막 자리, IPv6 뒤쪽을 가림)
 //    ALLOW_ORIGIN  다른 도메인에서 보낼 때만 지정 (예: https://내도메인)
+//    BASE          사이트가 놓이는 경로. 기본 /me/ (vite base 와 같아야 합니다)
 // ─────────────────────────────────────────────────────────────
 
 import { createServer } from 'node:http'
@@ -24,6 +25,9 @@ const LOG_DIR = resolve(process.env.LOG_DIR || 'logs')
 const DIST_DIR = resolve(process.env.DIST_DIR || 'dist')
 const MASK_IP = process.env.MASK_IP !== '0'
 const ALLOW_ORIGIN = process.env.ALLOW_ORIGIN || ''
+
+// vite base 와 맞춥니다. 배포본이 /me/ 아래에 놓이므로 여기서도 같은 경로로 서빙합니다.
+const BASE = `/${(process.env.BASE ?? '/me/').replace(/^\/+|\/+$/g, '')}/`.replace(/^\/\/$/, '/')
 
 const MAX_BODY = 32 * 1024 // 32KB 넘는 요청은 거부
 
@@ -140,7 +144,7 @@ async function handleCollect(req, res) {
 }
 
 async function serveStatic(req, res, pathname) {
-  let rel = decodeURIComponent(pathname)
+  let rel = decodeURIComponent(pathname).slice(BASE.length - 1)
   if (rel.endsWith('/')) rel += 'index.html'
 
   // 경로 탈출 방지
@@ -195,11 +199,16 @@ const server = createServer(async (req, res) => {
     res.writeHead(405).end()
     return
   }
+  // base 밖으로 들어온 요청은 GitHub Pages 와 똑같이 base 안으로 보냅니다
+  if (!pathname.startsWith(BASE)) {
+    res.writeHead(302, { Location: BASE }).end()
+    return
+  }
   await serveStatic(req, res, pathname)
 })
 
 server.listen(PORT, () => {
-  console.log(`  사이트   http://localhost:${PORT}`)
+  console.log(`  사이트   http://localhost:${PORT}${BASE}`)
   console.log(`  수집     POST /collect`)
   console.log(`  로그     ${LOG_DIR}/YYYY-MM-DD.jsonl`)
   console.log(`  IP 마스킹 ${MASK_IP ? '켜짐' : '꺼짐'}`)
