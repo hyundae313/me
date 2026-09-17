@@ -1,0 +1,29 @@
+.ftr {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--line);
+  padding-block: 26px;
+}
+
+.ftr-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--tx-3);
+  font-size: 0.66rem;
+}
+
+@media (max-width: 860px) {
+  .ftr {
+    padding-bottom: 34px;
+  }
+  .ftr-inner {
+    justify-content: center;
+    text-align: center;
+  }
+  .ftr-built {
+    width: 100%;
+  }
+}

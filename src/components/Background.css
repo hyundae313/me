@@ -1,0 +1,131 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% -10%, var(--bg-2), var(--bg) 60%);
+}
+
+.bg-grid {
+  position: absolute;
+  inset: -1px;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.35;
+  mask-image: radial-gradient(90% 70% at 50% 22%, #000 20%, transparent 78%);
+  -webkit-mask-image: radial-gradient(90% 70% at 50% 22%, #000 20%, transparent 78%);
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.bg-orb-1 {
+  top: -18vh;
+  left: -10vw;
+  width: 62vw;
+  height: 62vw;
+  max-width: 760px;
+  max-height: 760px;
+  background: var(--glow-1);
+  animation: drift-1 22s var(--ease) infinite alternate;
+}
+
+.bg-orb-2 {
+  top: 26vh;
+  right: -18vw;
+  width: 56vw;
+  height: 56vw;
+  max-width: 680px;
+  max-height: 680px;
+  background: var(--glow-2);
+  animation: drift-2 26s var(--ease) infinite alternate;
+}
+
+.bg-orb-3 {
+  bottom: -22vh;
+  left: 22vw;
+  width: 48vw;
+  height: 48vw;
+  max-width: 620px;
+  max-height: 620px;
+  background: rgba(244, 63, 94, 0.16);
+  animation: drift-3 30s var(--ease) infinite alternate;
+}
+
+.bg-spot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16), transparent 62%);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+  will-change: transform;
+}
+
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(130% 100% at 50% 40%, transparent 45%, rgba(0, 0, 0, 0.55));
+}
+
+[data-theme='light'] .bg-noise {
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+[data-theme='light'] .bg-vignette {
+  background: radial-gradient(
+    130% 100% at 50% 40%,
+    transparent 55%,
+    rgba(30, 35, 70, 0.08)
+  );
+}
+
+@keyframes drift-1 {
+  to {
+    transform: translate3d(9vw, 7vh, 0) scale(1.14);
+  }
+}
+@keyframes drift-2 {
+  to {
+    transform: translate3d(-11vw, 5vh, 0) scale(1.1);
+  }
+}
+@keyframes drift-3 {
+  to {
+    transform: translate3d(6vw, -8vh, 0) scale(1.18);
+  }
+}
+
+/* 모바일은 blur 비용이 크므로 오브를 줄이고 애니메이션을 늦춥니다 */
+@media (max-width: 860px) {
+  .bg-orb {
+    filter: blur(64px);
+    animation-duration: 34s;
+  }
+  .bg-orb-3 {
+    display: none;
+  }
+  .bg-grid {
+    background-size: 44px 44px;
+    opacity: 0.28;
+  }
+}

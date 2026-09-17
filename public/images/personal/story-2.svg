@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="2013 · 병원 연구실">
+  <defs>
+    <linearGradient id="g" x1=".1" y1="0" x2=".9" y2="1">
+      <stop offset="0" stop-color="#b9a894"/><stop offset="1" stop-color="#6b5f52"/>
+    </linearGradient>
+    <radialGradient id="v" cx=".5" cy=".42" r=".78">
+      <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3a2b1c" stop-opacity=".34"/>
+    </radialGradient>
+    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4"/>
+      <feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <rect width="1200" height="900" fill="url(#v)"/>
+  <rect width="1200" height="900" filter="url(#n)" opacity=".13" style="mix-blend-mode:overlay"/>
+  <g font-family="'Gowun Batang','Noto Serif KR',serif" fill="#fffaf0" opacity=".72" text-anchor="middle">
+    <text x="600" y="450" font-size="75">2013 · 병원 연구실</text>
+    <text x="600" y="490" font-size="35" opacity=".7">public / images / personal</text>
+  </g>
+</svg>

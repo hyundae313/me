@@ -1,0 +1,219 @@
+.tl {
+  position: relative;
+  list-style: none;
+  padding: 0 0 0 26px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tl::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: linear-gradient(var(--a1), var(--a2), transparent);
+  opacity: 0.5;
+}
+
+.tl-item {
+  position: relative;
+}
+
+.tl-dot {
+  position: absolute;
+  left: -26px;
+  top: 24px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--line-2);
+}
+
+.tl-dot.is-current {
+  background: var(--grad);
+  border-color: transparent;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--a1) 20%, transparent);
+  animation: pulse-dot 2.6s var(--ease) infinite;
+}
+
+.tl-card {
+  padding: 22px;
+  transition:
+    border-color 0.35s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+.tl-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.tl-card h3 {
+  font-size: 1.22rem;
+}
+
+.tl-role {
+  display: block;
+  margin-top: 3px;
+  color: var(--a2);
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+
+.tl-period {
+  color: var(--tx-3);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+.tl-period.is-current {
+  color: var(--tx);
+}
+
+.tl-desc {
+  margin-top: 14px;
+  color: var(--tx-2);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.tl-bullets {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.tl-bullets li {
+  position: relative;
+  padding-left: 17px;
+  color: var(--tx-2);
+  font-size: 0.87rem;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.tl-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--grad);
+  opacity: 0.8;
+}
+
+/* ── 학력 / 특허 ────────────────────────────────────────── */
+.career-extra {
+  margin-top: clamp(36px, 6vw, 60px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.career-block-title {
+  color: var(--tx-3);
+  margin-bottom: 12px;
+}
+
+.edu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 17px 18px;
+}
+
+.edu-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.edu-top strong {
+  font-family: var(--f-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+.edu-top .mono {
+  color: var(--tx-3);
+  font-size: 0.62rem;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.edu-major {
+  color: var(--tx-2);
+  font-size: 0.86rem;
+}
+
+.edu-note {
+  color: var(--tx-3);
+  font-size: 0.78rem;
+}
+
+.edu-num {
+  color: var(--a2);
+  font-size: 0.66rem;
+  text-transform: none;
+}
+
+.edu-lang {
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tl-card:hover {
+    border-color: color-mix(in srgb, var(--a2) 32%, transparent);
+    transform: translateX(4px);
+  }
+}
+
+@media (max-width: 860px) {
+  .tl {
+    padding-left: 22px;
+  }
+  .tl-dot {
+    left: -22px;
+  }
+  .tl-card {
+    padding: 18px;
+  }
+  .tl-head {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .tl-period {
+    padding-top: 0;
+  }
+}

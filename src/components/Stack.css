@@ -1,0 +1,77 @@
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.stack-card {
+  padding: 24px 22px;
+  transition:
+    border-color 0.35s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+.stack-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.stack-num {
+  color: transparent;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.stack-card h3 {
+  font-size: 1.02rem;
+  letter-spacing: -0.02em;
+}
+
+.stack-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.stack-card li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--tx-2);
+  font-size: 0.9rem;
+}
+
+.stack-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--grad);
+  flex: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .stack-card:hover {
+    border-color: color-mix(in srgb, var(--a2) 34%, transparent);
+    transform: translateY(-4px);
+  }
+}
+
+@media (max-width: 860px) {
+  .stack-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .stack-card {
+    padding: 20px 18px;
+  }
+}
