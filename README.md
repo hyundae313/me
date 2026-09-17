@@ -16,7 +16,11 @@ npm run lint
 
 라우터는 의존성 없이 `src/lib/useRoute.js` 로 직접 만들었습니다.
 정적 호스팅에서 `/dev` 를 새로고침해도 404가 나지 않도록 `public/_redirects`(Netlify)와
-`vercel.json`(Vercel)을 넣어뒀습니다.
+`vercel.json`(Vercel)을 넣어뒀습니다. GitHub Pages 는 배포 과정에서
+`index.html` 을 `404.html` 로 복사해 같은 역할을 합니다.
+
+**배포·작업 방법은 [`docs/`](docs/) 에 정리해 뒀습니다.**
+`main` 에 푸시하면 GitHub Actions 가 빌드해 <https://ryankim.kr/> 에 자동 반영됩니다.
 
 ---
 
