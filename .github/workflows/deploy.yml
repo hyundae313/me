@@ -26,7 +26,11 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # 방문 로그 수집 주소. 저장소 Secrets 에 없으면 빈 값이 되고 추적은 꺼집니다.
       - run: npm run build
+        env:
+          VITE_TRACK_ENDPOINT: ${{ secrets.VITE_TRACK_ENDPOINT }}
 
       # 클라이언트 라우팅(/dev)을 새로고침해도 열리도록 404 도 index.html 로 둡니다.
       - run: cp dist/index.html dist/404.html
