@@ -19,7 +19,7 @@ export const me = {
   job: '앱을 만들고, 가르칩니다',
   photo: `${BASE}images/personal/me.jpeg`, // 사진 교체 → public/images/personal/
 
-  greeting: '안녕하세요,',
+  greeting: '안녕하세요',
   intro: [
     '서울에서 프로그램을 만들고, 대학교에서 학생들을 가르치며 살고 있습니다.',
     '오래 붙잡고 있던 길을 한 번 놓아본 적이 있고,',
