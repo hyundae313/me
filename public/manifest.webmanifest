@@ -2,14 +2,14 @@
   "name": "Hyundae Kim — Profile",
   "short_name": "hyundae",
   "description": "React Native 앱 개발자 · 1인 스타트업 대표",
-  "start_url": "/?utm_source=pwa&utm_medium=homescreen",
+  "start_url": "/me/?utm_source=pwa&utm_medium=homescreen",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#05060b",
   "theme_color": "#05060b",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/me/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
