@@ -9,7 +9,7 @@ export const me = {
   name: '김현대',
   city: '서울',
   job: '앱을 만들고, 가르칩니다',
-  photo: `${BASE}images/personal/me0.PNG`,
+  photo: `${BASE}images/personal/intro.jpg`,
 
   greeting: '아직 만나지 못한 당신에게,',
 
@@ -82,7 +82,7 @@ export const story = {
       no: '01',
       year: '2007',
       title: '시골에서 서울로',
-      photo: `${BASE}images/personal/story-1.png`,
+      photo: `${BASE}images/personal/story-01.jpg`,
 
       body: [
         '시골에서 서울로 올라왔습니다. 열심인 학생은 아니었지만, 공부는 늘 잘했습니다.',
@@ -95,7 +95,7 @@ export const story = {
       no: '02',
       year: '2013',
       title: '예상하지 못했던 길',
-      photo: `${BASE}images/personal/story-2.jpg`,
+      photo: `${BASE}images/personal/story-02.jpg`,
 
       body: [
         '졸업을 앞두고 오래 고민했습니다. 취직이냐, 공부를 더 하느냐.',
@@ -108,7 +108,7 @@ export const story = {
       no: '03',
       year: '2016',
       title: '조금 더 넓은 세상으로',
-      photo: `${BASE}images/personal/story-3.JPG`,
+      photo: `${BASE}images/personal/story-03.jpg`,
 
       body: [
         '좋은 인연 덕분에 UC San Diego에서 연구원으로 지낼 기회가 생겼습니다. 그렇게 낯선 땅에서 1년을 보냈습니다.',
@@ -121,7 +121,7 @@ export const story = {
       no: '04',
       year: '2017',
       title: '내가 원하는 삶',
-      photo: `${BASE}images/personal/story-4.JPG`,
+      photo: `${BASE}images/personal/story-04.jpg`,
 
       body: [
         '한국으로 돌아와, 안정적인 길 대신 제가 하고 싶었던 일을 선택했습니다.',
@@ -134,7 +134,7 @@ export const story = {
       no: '05',
       year: '2017 — 2021',
       title: '내 것을 만들며',
-      photo: `${BASE}images/personal/story-5.jpeg`,
+      photo: `${BASE}images/personal/story-05.jpg`,
 
       body: [
         '하고 싶은 일을 하며 살고 싶어 시작한 사업이었지만, 좋아하는 일과 그 일로 살아남는 건 전혀 다른 이야기였습니다.',
@@ -147,7 +147,7 @@ export const story = {
       no: '06',
       year: '지금',
       title: '지금은',
-      photo: `${BASE}images/personal/story-4.png`,
+      photo: `${BASE}images/personal/story-06.jpg`,
 
       body: [
         '지금은 서울에서 개발을 하고, 대학에서 학생들을 가르칩니다.',
@@ -179,19 +179,19 @@ export const days = {
 
   photos: [
     {
-      src: `${BASE}images/personal/me-5.png`,
+      src: `${BASE}images/personal/days-01.jpg`,
       caption: '휴일',
     },
     {
-      src: `${BASE}images/personal/day-1.JPG`,
+      src: `${BASE}images/personal/days-02.jpg`,
       caption: '산책',
     },
     {
-      src: `${BASE}images/personal/me-2.JPG`,
+      src: `${BASE}images/personal/days-03.jpg`,
       caption: '운동하는 날',
     },
     {
-      src: `${BASE}images/personal/day-4.png`,
+      src: `${BASE}images/personal/days-04.jpg`,
       caption: '좋아하는 순간들',
     },
   ],
@@ -202,12 +202,12 @@ export const days = {
 export const interludes = [
   {
     after: 'story',
-    src: `${BASE}images/personal/me-1.JPG`,
+    src: `${BASE}images/personal/interlude-01.jpg`,
     caption: '',
   },
   {
     after: 'likes',
-    src: `${BASE}images/personal/day-2.png`,
+    src: `${BASE}images/personal/interlude-02.jpg`,
     caption: '',
   },
 ]
@@ -315,7 +315,7 @@ export const likes = {
 export const values = {
   title: '앞으로',
 
-  photo: `${BASE}images/personal/me-3.png`,
+  photo: `${BASE}images/personal/values.jpg`,
   photoCaption: '',
 
   lead: '여러 길을 돌았지만, 바라는 삶은 의외로 단순합니다.',
