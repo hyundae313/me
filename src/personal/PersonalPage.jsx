@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { chapters } from '../data/personal'
 import { useActiveSection } from '../hooks/useActiveSection'
-import { useFonts } from '../hooks/useFonts'
 import { useParallax } from '../hooks/useParallax'
 import { useReveal } from '../hooks/useReveal'
 import { useScrollProgress } from '../hooks/useScrollProgress'
@@ -9,8 +8,7 @@ import { trackEvent } from '../lib/analytics'
 import { Days, Interlude, Intro, Likes, Story, Values } from './sections'
 import './personal.css'
 
-const FONTS =
-  'https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;600&family=EB+Garamond:ital,wght@0,500;1,400&display=swap'
+// 폰트는 index.html <head>에서 바로 불러옵니다(더 빨리 뜨도록).
 
 const ids = chapters.map((c) => c.id)
 
@@ -24,7 +22,6 @@ export default function PersonalPage() {
   const active = useActiveSection(ids)
   const progress = useScrollProgress()
 
-  useFonts(FONTS)
   useReveal(null, '.p-rise')
   useParallax()
 

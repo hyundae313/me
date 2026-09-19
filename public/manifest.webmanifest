@@ -1,12 +1,12 @@
 {
-  "name": "Hyundae Kim — Profile",
-  "short_name": "hyundae",
-  "description": "React Native 앱 개발자 · 1인 스타트업 대표",
+  "name": "김현대 — 아직 만나지 못한 당신에게",
+  "short_name": "김현대",
+  "description": "제가 지나온 시간과 좋아하는 것들에 대한 이야기.",
   "start_url": "/?utm_source=pwa&utm_medium=homescreen",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#05060b",
-  "theme_color": "#05060b",
+  "background_color": "#f4eee2",
+  "theme_color": "#f4eee2",
   "icons": [
     {
       "src": "/favicon.svg",

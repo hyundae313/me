@@ -1,14 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8b5cf6"/><stop offset=".55" stop-color="#22d3ee"/><stop offset="1" stop-color="#6ee7ff"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="630" fill="#05060b"/>
-  <circle cx="180" cy="120" r="320" fill="#8b5cf6" opacity=".28"/>
-  <circle cx="1050" cy="560" r="300" fill="#22d3ee" opacity=".22"/>
-  <g font-family="'Space Grotesk',ui-sans-serif,system-ui">
-    <text x="90" y="300" font-size="96" font-weight="700" fill="url(#g)" letter-spacing="-4">Hyundae Kim</text>
-    <text x="94" y="368" font-size="34" fill="#a2a8c0" letter-spacing="1">Software Engineer · Seoul</text>
-  </g>
+  <rect width="1200" height="630" fill="#f4eee2"/>
+  <rect
+    x="60" y="60" width="1080" height="510"
+    fill="none" stroke="#2c2620" stroke-opacity="0.18"
+    stroke-width="1.5" stroke-dasharray="2 7"
+  />
+  <text
+    x="600" y="340"
+    text-anchor="middle"
+    font-family="'Gowun Batang','Noto Serif KR',serif"
+    font-size="120"
+    font-weight="700"
+    fill="#2c2620"
+  >김현대</text>
+  <text
+    x="600" y="410"
+    text-anchor="middle"
+    font-family="'Noto Serif KR',serif"
+    font-size="30"
+    fill="#6a6053"
+  >아직 만나지 못한 당신에게</text>
 </svg>
