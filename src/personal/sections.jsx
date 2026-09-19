@@ -1,13 +1,24 @@
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { days, interludes, likes, me, story, values } from '../data/personal'
+import { useTypeSequence } from '../hooks/useTypeSequence'
 import { trackEvent } from '../lib/analytics'
 
 /** 필름 인화지 느낌의 사진 프레임 */
-function Photo({ src, alt, caption, tilt = 0, className = '' }) {
+function Photo({ src, alt, caption, tilt = 0, className = '', parallax = false }) {
+  const frame = (
+    <div className="p-photo-frame">
+      <img src={src} alt={alt} loading="lazy" decoding="async" />
+    </div>
+  )
   return (
     <figure className={`p-photo ${className}`} style={{ '--tilt': `${tilt}deg` }}>
-      <div className="p-photo-frame">
-        <img src={src} alt={alt} loading="lazy" decoding="async" />
-      </div>
+      {parallax ? (
+        <div className="p-parallax" data-parallax="">
+          {frame}
+        </div>
+      ) : (
+        frame
+      )}
       {caption && <figcaption>{caption}</figcaption>}
     </figure>
   )
@@ -32,33 +43,59 @@ export function Interlude({ after }) {
 }
 
 export function Intro() {
+  // 사진·이름은 바로 보이고, 인사말 → 소개 문장 → 명함 목록(나이·사는 곳·MBTI...) 순서로 이어서 타이핑합니다.
+  const { allTexts, factLines, factStarts } = useMemo(() => {
+    const factLines = me.facts.map((f) => (Array.isArray(f.v) ? f.v : [f.v]))
+    const factStarts = factLines.reduce((starts, l) => {
+      const prev = starts.length ? starts[starts.length - 1].end : 1 + me.intro.length
+      starts.push({ start: prev, end: prev + l.length })
+      return starts
+    }, [])
+    return {
+      allTexts: [me.greeting, ...me.intro, ...factLines.flat()],
+      factLines,
+      factStarts: factStarts.map((s) => s.start),
+    }
+  }, [])
+  const { texts: typed, doneIndex } = useTypeSequence(allTexts)
+  const activeIndex = doneIndex + 1
+  const caretAt = (i) => activeIndex === i && activeIndex < allTexts.length
+  const renderTyped = (idx) => (
+    <span className="p-caret-wrap">
+      {typed[idx]}
+      {caretAt(idx) && <span className="p-caret" aria-hidden="true" />}
+    </span>
+  )
+
   return (
     <section className="p-sec p-intro" id="intro">
       <div className="p-col">
         <Photo src={me.photo} alt={me.name} tilt={-1.5} className="p-portrait p-rise" />
 
-        <p className="p-greeting p-rise">{me.greeting}</p>
         <h1 className="p-name p-rise">{me.name}</h1>
         <span className="p-rule p-rise" aria-hidden="true" />
 
-        <div className="p-lead p-rise">
-          {me.intro.map((line, i) => (
-            <p key={i}>{line}</p>
+        <div className="p-lead">
+          <p>{renderTyped(0)}</p>
+          {me.intro.map((_, i) => (
+            <p key={i}>{renderTyped(i + 1)}</p>
           ))}
         </div>
 
-        <dl className="p-facts p-rise">
-          {me.facts.map((f) => (
-            <div key={f.k}>
-              <dt>{f.k}</dt>
-              <dd>
-                {Array.isArray(f.v)
-                  ? f.v.map((line, i) => <span key={i}>{line}</span>)
-                  : f.v}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <table className="p-facts">
+          <tbody>
+            {me.facts.map((f, fi) => (
+              <tr key={f.k}>
+                <th scope="row">{f.k}</th>
+                <td>
+                  {factLines[fi].map((_, i) => (
+                    <span key={i}>{renderTyped(factStarts[fi] + i)}</span>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       <div className="p-cue" aria-hidden="true">
@@ -85,6 +122,7 @@ export function Story() {
               alt={c.title}
               tilt={i % 2 ? 1.6 : -1.6}
               className="p-rise"
+              parallax
             />
             <div className="p-chapter-text p-rise">
               <span className="p-latin p-chapter-no">{c.no}</span>
@@ -123,6 +161,7 @@ export function Days() {
             caption={ph.caption}
             tilt={i % 2 ? 1.4 : -1.2}
             className="p-rise"
+            parallax
           />
         ))}
       </div>
@@ -166,6 +205,32 @@ export function Likes() {
 }
 
 export function Values() {
+  // 마무리 편지는 화면에 들어올 때만 타이핑을 시작합니다(로드 시 바로 시작하면 스크롤해서
+  // 도착했을 땐 이미 다 끝나 있습니다).
+  const [closingInView, setClosingInView] = useState(false)
+  const closingRef = useRef(null)
+
+  useEffect(() => {
+    const el = closingRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting) return
+        setClosingInView(true)
+        io.disconnect()
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.12 },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  const { texts: typedClosing, doneIndex: closingDone } = useTypeSequence(values.closing, {
+    start: closingInView,
+  })
+  const closingActive = closingDone + 1
+  const closingCaretAt = (i) => closingActive === i && closingActive < values.closing.length
+
   return (
     <section className="p-sec p-values" id="values">
       <div className="p-col">
@@ -191,9 +256,14 @@ export function Values() {
           />
         )}
 
-        <div className="p-closing p-rise">
+        <div className="p-closing p-rise" ref={closingRef}>
           {values.closing.map((line, i) => (
-            <p key={i}>{line}</p>
+            <p key={i}>
+              <span className="p-caret-wrap">
+                {typedClosing[i]}
+                {closingCaretAt(i) && <span className="p-caret" aria-hidden="true" />}
+              </span>
+            </p>
           ))}
           <p className="p-sign">{values.signature}</p>
           <a

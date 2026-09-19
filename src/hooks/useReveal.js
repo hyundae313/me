@@ -26,10 +26,16 @@ export function useReveal(dep, selector = '.reveal') {
     )
     els.forEach((el) => io.observe(el))
 
-    // 안전장치: 어떤 이유로든 관찰이 안 걸리면 페이지가 통째로 빈 화면이 됩니다.
-    // 2.5초 뒤에도 숨어 있는 요소는 그냥 보여줍니다.
+    // 안전장치: 어떤 이유로든 관찰이 안 걸리면 화면에 있는 요소가 통째로 빈 화면이 됩니다.
+    // 2.5초 뒤에도 '화면 안에' 숨어 있는 요소만 그냥 보여줍니다.
+    // (아래쪽 미방문 섹션까지 여기서 다 열어버리면 스크롤해도 애니메이션이 안 보입니다.)
     const safety = setTimeout(() => {
-      els.forEach((el) => el.classList.add('in'))
+      els.forEach((el) => {
+        const rect = el.getBoundingClientRect()
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('in')
+        }
+      })
     }, 2500)
 
     return () => {

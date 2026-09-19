@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { chapters } from '../data/personal'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useFonts } from '../hooks/useFonts'
+import { useParallax } from '../hooks/useParallax'
 import { useReveal } from '../hooks/useReveal'
 import { useScrollProgress } from '../hooks/useScrollProgress'
 import { trackEvent } from '../lib/analytics'
@@ -25,6 +26,7 @@ export default function PersonalPage() {
 
   useFonts(FONTS)
   useReveal(null, '.p-rise')
+  useParallax()
 
   useEffect(() => {
     document.title = '김현대'
