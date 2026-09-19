@@ -146,7 +146,6 @@ html[data-page='personal'] body {
   text-align: center;
   color: var(--ink-3);
   font-family: var(--f-title);
-  font-style: italic;
   font-size: 0.92rem;
 }
 
